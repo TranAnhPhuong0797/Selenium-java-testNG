@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
@@ -16,7 +17,7 @@ public class Topic_01_Check_Environment {
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
 
-	@BeforeClass
+	@BeforeTest
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
 			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
