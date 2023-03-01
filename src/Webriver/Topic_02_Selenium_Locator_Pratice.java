@@ -1,22 +1,29 @@
 package Webriver;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+public class Topic_02_Selenium_Locator_Pratice {
 
-public class Topic_01_Check_Environment {
-	
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
-
+	
+	//Element
+	WebElement name = driver.findElement(By.xpath(""));
+	WebElement email = driver.findElement(By.xpath(""));
+	WebElement confirmEmail = driver.findElement(By.xpath(""));
+	WebElement password = driver.findElement(By.xpath(""));
+	WebElement confrimPassword = driver.findElement(By.xpath(""));
+	WebElement phone = driver.findElement(By.xpath(""));
+	
 	@BeforeClass
 	
 	public void beforeClass() {
@@ -29,27 +36,41 @@ public class Topic_01_Check_Environment {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://www.facebook.com/");
+		driver.get("https://alada.vn/tai-khoan/dang-ky.html");
 	}
 
 	@Test
-	public void TC_01_Url() {
-		Assert.assertEquals(driver.getCurrentUrl(), "https://www.facebook.com/");
+	public void TC_01_Register_emptyData() {
+		
 	}
 
 	@Test
-	public void TC_02_Logo() {
-		Assert.assertTrue(driver.findElement(By.cssSelector("img.fb_logo")).isDisplayed());
+	public void TC_02_Register_invalidEmail() {
+		
 	}
 
 	@Test
-	public void TC_03_Form() {
-		Assert.assertTrue(driver.findElement(By.xpath("//form[@data-testid='royal_login_form']")).isDisplayed());
+	public void TC_03_Register_confirmEmail() {
+		
+	}
+
+	@Test
+	public void TC_04_Register_PasswordLessthan6characters() {
+		
+	}
+	
+	@Test
+	public void TC_05_Register_incorrectConfirmpassword() {
+		
+	}
+	
+	@Test
+	public void TC_06_Register_incorrectPhonenumber() {
+		
 	}
 
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
 	}
-
 }
