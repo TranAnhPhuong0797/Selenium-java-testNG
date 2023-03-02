@@ -19,7 +19,6 @@ public class Topic_02_Selenium_Locator {
 	
 	
 	@BeforeClass
-	
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
 			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
@@ -35,40 +34,47 @@ public class Topic_02_Selenium_Locator {
 
 	@Test
 	public void TC_01_ID() {
+		//Get Locator by ID
 		driver.get("https://demos.telerik.com/kendo-ui/button/index");
 		driver.findElement(By.id("primaryTextButton")).click();
 	}
 
 	@Test
 	public void TC_02_Class() {
+		//Get Locator by Class
 		driver.get("https://demo.nopcommerce.com/search");
 		driver.findElement(By.className("search-text")).sendKeys("Dell");
 	}
 
 	@Test
 	public void TC_03_Name() {
+		//Get Locator by Name
 		driver.findElement(By.name("advs")).click();
 	}
 
 	@Test
 	public void TC_04_Tagname() {
+		//Get Locator by Tagname
 		System.out.print(driver.findElement(By.tagName("button")).getSize());
 	}
 	
 	@Test
 	public void TC_05_Linktext() {
+		//Get Locator by Link text
 		//Link tuyet doi
 		driver.findElement(By.linkText("Privacy notice")).click();
 	}
 	
 	@Test
 	public void TC_06_PartialLinktext() {
+		//Get Locator by Partial Link Text
 		//Link tuong doi
 		driver.findElement(By.partialLinkText("Privacy")).click();
 	}
 	
 	@Test
 	public void TC_07_CSS() {
+		//Get Locator by CSS
 		driver.get("https://demo.nopcommerce.com/register");
 		
 		driver.findElement(By.cssSelector("#FirstName")).sendKeys("ATF-CSS First name");
@@ -79,6 +85,7 @@ public class Topic_02_Selenium_Locator {
 	
 	@Test
 	public void TC_08_Xpath() {
+		//Get Locator by Xpath
 		driver.get("https://demo.nopcommerce.com/register");
 		
 		driver.findElement(By.xpath("//label[text()= 'First name:']//following::input[@id='FirstName']")).sendKeys("ATF-Xpath First name");
