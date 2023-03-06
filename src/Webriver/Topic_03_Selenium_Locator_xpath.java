@@ -101,7 +101,7 @@ public class Topic_03_Selenium_Locator_xpath {
 
 	@Test
 	public void TC_07_xpath_insideParent() {
-		// https://automationfc.github.io/basic-form/
+		// https://automationfc.github.io/jquery-selectable/
 		// Inside Parent
 		driver.get("https://automationfc.github.io/jquery-selectable/");
 		WebElement li_number = driver.findElement(By.xpath("//li[7]"));
