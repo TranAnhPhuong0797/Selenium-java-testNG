@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+//Note: This class introduces about the java types primitive
+
 public class Topic_02_javaDatatype {
 
 	public static void main(String[] args) {

@@ -14,6 +14,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+//Note: This class introduces about the method used to get elements by "Xpath"
+
 public class Topic_03_Selenium_Locator_xpath {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");

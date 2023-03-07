@@ -13,6 +13,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+
+//Note: This class introduces about the method used to get elements by "CSS"
+
 public class Topic_03_Selenium_Locator_CSS {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");

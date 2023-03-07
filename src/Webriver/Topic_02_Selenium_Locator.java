@@ -11,6 +11,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+
+//Note: This class introduces about the methods used to get elements
 public class Topic_02_Selenium_Locator {
 
 	WebDriver driver;
