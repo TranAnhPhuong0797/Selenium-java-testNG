@@ -1,4 +1,4 @@
-package Webriver;
+package Webriver_Partice_Exercise;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +12,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Topic_02_Selenium_Locator_Pratice {
-
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
@@ -267,17 +266,18 @@ public class Topic_02_Selenium_Locator_Pratice {
 
 		// 8- click button Register
 		btn_Register.click();
-		
+
 		// 9 - Get text err phone mess
 		err_lenPhone = err_txtPhone.getText();
-		
+
 		// 10- compare text
-		Assert.assertEquals(err_lenPhone, "Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019 - 088 - 03 - 05 - 07 - 08");
-		
+		Assert.assertEquals(err_lenPhone,
+				"Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019 - 088 - 03 - 05 - 07 - 08");
+
 	}
 
 	@AfterClass
 	public void afterClass() {
-		// driver.quit();
+		driver.quit();
 	}
 }
