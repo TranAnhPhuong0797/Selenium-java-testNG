@@ -4,11 +4,17 @@ import java.awt.Window;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Navigation;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebDriver.TargetLocator;
 import org.openqa.selenium.WebDriver.Timeouts;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 
@@ -86,6 +92,57 @@ public class Topic_05_Selenium_WebDriver_WebElement {
 	}
 	
 	public void TC_02_Fuction_WebElement() {
+		WebElement element = null;
+		
+		//Find a element
+		element.findElement(By.xpath("")); //**
+		
+		//Clear value of element (Textbox, Text area, Dropdown)
+		element.clear(); //**
+		
+		//Click the element (Button, Href, checkbox, radiobutton, ...)
+		element.click(); //**
+		
+		//Fill the value into element (textbox, text area,)
+		element.sendKeys(""); //**
+		
+		
+		String Aelement = element.getAttribute("Placeholder");
+	
+		//GUI: Font/Size/Color/Location/Position/...
+		element.getCssValue("");
+		
+		Point location = element.getLocation();
+		location.x = 225;
+		location.y = 225;
+		
+		Dimension size = element.getSize();
+		size.getHeight();
+		size.getWidth();
+		System.out.print(size.getHeight());
+		System.out.print(size.getWidth());
+		
+		//Location + Size
+		Rectangle rec = element.getRect();
+		
+		
+		//Screen shot when test case fail
+		element.getScreenshotAs(OutputType.FILE);
+		element.getScreenshotAs(OutputType.BYTES);
+		element.getScreenshotAs(OutputType.BASE64);
+		
+		//Verify element is shown
+		element.isDisplayed();
+		//Verify element is active
+		element.isEnabled();
+		//Verify element is selected
+		element.isSelected();
+		
+		//Verify tag name
+		element.getTagName();
+		
+		//Elements in form - same with action "Enter"
+		element.submit();
 		
 	}
 }
