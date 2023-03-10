@@ -120,7 +120,7 @@ public class Topic_05_Selenium_Pratice_Browser {
 				By.xpath("//span[contains(text(),'Create an Account')]//ancestor::a[@title='Create an Account']"))
 				.click();
 		sleepfunction(3);
-		
+
 		Assert.assertTrue(driver.getPageSource().contains("Create an Account"));
 
 	}
