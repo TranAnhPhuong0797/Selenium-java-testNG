@@ -1,6 +1,5 @@
 package Webriver;
 
-import java.awt.Window;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -14,13 +13,11 @@ import org.openqa.selenium.WebDriver.Navigation;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebDriver.TargetLocator;
 import org.openqa.selenium.WebDriver.Timeouts;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Test;
 
 
-import okio.Timeout;
 
-@Test
 public class Topic_05_Selenium_WebDriver_WebElement {
 	//Note: This class introduces about the definition of function related to Web Driver & Web Element
 	//Note: //** (mean the functions usually to use)
@@ -64,9 +61,9 @@ public class Topic_05_Selenium_WebDriver_WebElement {
 		//The time wait until the script is executed
 		time.setScriptTimeout(5, TimeUnit.SECONDS);
 		
-		org.openqa.selenium.WebDriver.Window window = otp.window();
-		window.fullscreen();
-		window.maximize(); //**
+		Window win = otp.window();
+		win.fullscreen();
+		win.maximize(); //**
 		
 		//Direction on Browser
 		Navigation nav = driver.navigate();
