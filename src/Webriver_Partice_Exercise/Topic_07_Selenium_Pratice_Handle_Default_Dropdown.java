@@ -1,5 +1,7 @@
 package Webriver_Partice_Exercise;
 
+import static org.testng.Assert.ARRAY_MISMATCH_TEMPLATE;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +23,7 @@ public class Topic_07_Selenium_Pratice_Handle_Default_Dropdown {
 	Random rand = new Random();
 	String day, month, year;
 	Select select;
+	String countryName, provinceName, cityName, address, postalCode, phoneNum, faxNum;
 	
 	@BeforeClass
 	public void beforeClass() {
@@ -43,6 +46,14 @@ public class Topic_07_Selenium_Pratice_Handle_Default_Dropdown {
 		day = "30";
 		month = "July";
 		year = "1986";
+		
+		countryName = "United States";
+		provinceName = "California";
+		cityName = "Sacramento";
+		address = "3440 C St, Sacramento, CA 95816, Hoa Kỳ";
+		postalCode = "90210";
+		phoneNum = "+19164427370";
+		faxNum = "800-689-4776";
 		}
 	
 	public void sleepfunction(long timeInsecond) {
@@ -107,9 +118,39 @@ public class Topic_07_Selenium_Pratice_Handle_Default_Dropdown {
 	
 	@Test
 	public void TC_02_addAddress() {
+		driver.findElement(By.xpath("//li[@class='customer-addresses inactive']//a[contains(text(),'Addresses')]")).click();
+		driver.findElement(By.xpath("//button[text()='Add new']")).click();
+		sleepfunction(2);
 		
+		driver.findElement(By.id("Address_FirstName")).sendKeys(firstName);
+		driver.findElement(By.id("Address_LastName")).sendKeys(lastName);
+		driver.findElement(By.id("Address_Email")).sendKeys(emailAddress);
+		driver.findElement(By.id("Address_Company")).sendKeys(companyName);
+		
+		new Select(driver.findElement(By.id("Address_CountryId"))).selectByVisibleText(countryName);
+		new Select(driver.findElement(By.id("Address_StateProvinceId"))).selectByVisibleText(provinceName);
+		
+		driver.findElement(By.id("Address_City")).sendKeys(cityName);
+		driver.findElement(By.id("Address_Address1")).sendKeys(address);
+		driver.findElement(By.id("Address_ZipPostalCode")).sendKeys(postalCode);
+		driver.findElement(By.id("Address_PhoneNumber")).sendKeys(phoneNum);
+		driver.findElement(By.id("Address_FaxNumber")).sendKeys(faxNum);
+		
+		driver.findElement(By.xpath("//button[text()='Save']")).click();
+		sleepfunction(3);
+		
+		//Verify information new Account
+		Assert.assertEquals(driver.findElement(By.xpath("//li[@class='name']")).getText(), firstName +  " " + lastName);
+		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='email']")).getText().contains(emailAddress));
+		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='phone']")).getText().contains(phoneNum));
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//li[@class='company']")).getText(), companyName);
+		Assert.assertEquals(driver.findElement(By.xpath("//li[@class='address1']")).getText(), address);
+		Assert.assertEquals(driver.findElement(By.xpath("//li[@class='city-state-zip']")).getText(), cityName + ", " + provinceName + ", " + postalCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//li[@class='country']")).getText(), countryName);
 	}
 	
+
 	@AfterClass
 	public void afterClass() {
 		//driver.quit();
