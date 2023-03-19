@@ -153,7 +153,7 @@ public class Topic_07_Selenium_Pratice_Handle_Default_Dropdown {
 
 	@AfterClass
 	public void afterClass() {
-		//driver.quit();
+		driver.quit();
 	}
 	
 }
