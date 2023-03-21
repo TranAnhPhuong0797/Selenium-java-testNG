@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +21,7 @@ import org.testng.annotations.Test;
 public class Topic_10__Selenium_Pratice_button_checkbox_radio {
 	WebDriver driver;
 	WebDriverWait explicitwait;
+	JavascriptExecutor jsExcutor;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
 
@@ -32,6 +34,9 @@ public class Topic_10__Selenium_Pratice_button_checkbox_radio {
 		}
 
 		driver = new ChromeDriver();
+		//Variable initialization JS after Driver variable
+		jsExcutor = (JavascriptExecutor) driver;
+		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		explicitwait = new WebDriverWait(driver, 30);
@@ -99,16 +104,48 @@ public class Topic_10__Selenium_Pratice_button_checkbox_radio {
 	
 	@Test
 	public void TC_03_Checkbox_Radiobutton() {
-		driver.get("https://material.angular.io/components/radio/examples");
+		driver.get("https://docs.google.com/forms/d/e/1FAIpQLSfiypnd69zhuDkjKgqvpID9kwO29UCzeCVrGGtbNPZXQok0jA/viewform");
 		sleepfunction(2);
-
+		
+		By radiobtn = By.xpath("//div[@aria-label='Hà Nội']");
+		By checkbox = By.xpath("//div[@aria-label='Quảng Nam']");
+		// Syntax JavascriptExecutor
+		jsExcutor.executeScript("arguments[0].click();", driver.findElement(radiobtn));
+		sleepfunction(2);
+		
+		jsExcutor.executeScript("arguments[0].click();", driver.findElement(checkbox));
+		sleepfunction(2);
+		
+		// Verify the radio button select successful
+//		Assert.assertTrue(driver.findElement(radiobtn).isSelected());	
+//		Assert.assertTrue(driver.findElement(checkbox).isSelected());
+		
+		Assert.assertEquals(driver.findElement(radiobtn).getAttribute("ariaChecked"), "true");
+		Assert.assertEquals(driver.findElement(checkbox).getAttribute("ariaChecked"), "true");
 	}
 	
 	@Test
 	public void TC_04_Checkbox_Radiobutton() {
-		//driver.get("");
+		driver.get("https://tiemchungcovid19.gov.vn/portal/register-person");
+		sleepfunction(2);
 		
-
+		/* Case 4 */
+		// Input card is disable But still use to click
+		// The click function of WebElement is not click the element hidden
+		// => The element must be visible and it must have a Height and Width greater than 0;
+		
+		// So, we should use a Click function of Javascript to click (Can click the Element is hidden)
+		// Selenium provides a library for embedding code JS into the test scenario => JavascriptExecutor
+		
+		
+		By radiobtn = By.xpath("//div[text()='Đăng ký cho người thân']//preceding-sibling::div/input");
+		// Syntax JavascriptExecutor
+		jsExcutor.executeScript("arguments[0].click();", driver.findElement(radiobtn));
+		sleepfunction(2);
+		
+		// Verify the radio button select successful
+		Assert.assertTrue(driver.findElement(radiobtn).isSelected());
+		
 	}
 	
 	public void verifyCheckboxTick(String checkboxXpath) {
@@ -123,20 +160,6 @@ public class Topic_10__Selenium_Pratice_button_checkbox_radio {
 		}
 	}
 	
-//	public void selectcheckbox(String checkboxXpath, String alllistCheckbox, String expectedCheckbox) {
-//		List<WebElement> allCheckbox =  driver.findElements(By.xpath(alllistCheckbox));
-//		WebElement checkboxElement = driver.findElement(By.xpath("//ul[@class='fieldlist']//li//label[text()='Dual-zone air conditioning']//preceding-sibling::input"));
-//		for (WebElement checkbox : allCheckbox) {
-//			//System.out.print(checkbox);
-//			if(checkbox.getText().trim().equals(expectedCheckbox)) {
-//				sleepfunction(1);			
-//				checkbox.click();
-//				break;
-//			}
-//		}
-//		
-//		Assert.assertTrue(checkboxElement.isSelected());
-//	}
 	
 	@AfterClass
 	public void afterClass() {
