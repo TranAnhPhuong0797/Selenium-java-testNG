@@ -119,6 +119,6 @@ public class Topic_11__Selenium_Pratice_Alert {
 	
 	@AfterClass
 	public void afterClass() {
-		//driver.quit();
+		driver.quit();
 	}
 }
