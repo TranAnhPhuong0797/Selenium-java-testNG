@@ -102,38 +102,72 @@ public class Topic_15_Selenium_Handle_Popup_Dialog_I {
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='password-form-login-message']")).getText(), "Sai tên đăng nhập hoặc mật khẩu");
 	}
 	
-//	@Test
-//	public void TC_03_FixedPopupNotinDOM() {
-//		driver.get("https://tiki.vn/");
-//		sleepfunction(2);
-//		
-//		By loginPopup = By.xpath("//div[contains(@class,'ReactModal__Content')]");
-//		
-//		//Verify pop up still not visible
-//		Assert.assertEquals(driver.findElements(loginPopup).size(), 0);
-//		
-//		//Click open Pop-up
-//		driver.findElement(By.xpath("//div[contains(@data-view-id,'account_container')]")).click();
-//		sleepfunction(2);
-//		
-//		//Verify pop up is displayed
-//		Assert.assertTrue(driver.findElement(loginPopup).isDisplayed());
-//		Assert.assertEquals(driver.findElements(loginPopup).size(), 1);
-//		
-//		driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("09222221434");
-//		sleepfunction(2);
-//		
-//		driver.findElement(By.xpath("//button[@class='btn-close']")).click();
-//		sleepfunction(1);
-//		
-//		//Verify pop up still not visible
-//		Assert.assertEquals(driver.findElements(loginPopup).size(), 0);
-//	}
+	//Part II
+	@Test
+	public void TC_03_FixedPopupNotinDOM() {
+		driver.get("https://tiki.vn/");
+		sleepfunction(2);
+		
+		By loginPopup = By.xpath("//div[contains(@class,'ReactModal__Content')]");
+		
+		//Verify pop up still not visible
+		Assert.assertEquals(driver.findElements(loginPopup).size(), 0);
+		
+		//Click open Pop-up
+		driver.findElement(By.xpath("//div[contains(@data-view-id,'account_container')]")).click();
+		sleepfunction(2);
+		
+		//Verify pop up is displayed
+		Assert.assertTrue(driver.findElement(loginPopup).isDisplayed());
+		//Assert.assertEquals(driver.findElements(loginPopup).size(), 1);
+		
+		driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("09222221434");
+		sleepfunction(2);
+		
+		driver.findElement(By.xpath("//button[@class='btn-close']")).click();
+		sleepfunction(1);
+		
+		//Verify pop up still not visible
+		Assert.assertEquals(driver.findElements(loginPopup).size(), 0);
+		
+		//Click open Pop-up
+		driver.findElement(By.xpath("//div[contains(@data-view-id,'account_container')]")).click();
+		sleepfunction(2);
+		
+		driver.findElement(By.xpath("//p[@class='login-with-email']")).click();
+		sleepfunction(1);
+		
+		driver.findElement(By.xpath("//button[text()='Đăng nhập']")).click();
+		sleepfunction(1);
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//span[@class='error-mess' and text()='Email không được để trống']")).getText(), "Email không được để trống");
+		Assert.assertEquals(driver.findElement(By.xpath("//span[@class='error-mess' and text()='Mật khẩu không được để trống']")).getText(), "Mật khẩu không được để trống");
+		
+		driver.findElement(By.xpath("//button[@class='btn-close']")).click();
+		sleepfunction(1);
+		
+		//Verify pop up still not visible
+		Assert.assertEquals(driver.findElements(loginPopup).size(), 0);
+	}
 	
 	@Test
 	public void TC_04_FixedPopupNotinDOM() {
-		//driver.get("https://www.facebook.com/");
+		driver.get("https://www.facebook.com/");
+		sleepfunction(2);
 		
+		By createAccountpopup = By.xpath("//div[text()='Sign Up']/parent::div/parent::div");
+		
+		driver.findElement(By.cssSelector("a[data-testid='open-registration-form-button']")).click();
+		sleepfunction(1);
+		
+		//Verify pop up is displayed
+		Assert.assertTrue(driver.findElement(createAccountpopup).isDisplayed());
+		
+		driver.findElement(By.xpath("//div[text()='Sign Up']/parent::div/preceding-sibling::img")).click();
+		sleepfunction(1);
+		
+		//Verify pop up still not visible
+		Assert.assertEquals(driver.findElements(createAccountpopup).size(), 0);
 	}
 	
 	@AfterClass
