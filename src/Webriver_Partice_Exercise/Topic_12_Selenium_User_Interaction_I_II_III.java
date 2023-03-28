@@ -20,7 +20,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_12__Selenium_User_Interaction_I_II_III {
+public class Topic_12_Selenium_User_Interaction_I_II_III {
 	WebDriver driver;
 	Actions action;
 	JavascriptExecutor jsexecutor;
@@ -199,6 +199,7 @@ public class Topic_12__Selenium_User_Interaction_I_II_III {
 		Assert.assertEquals(bigHexa, "#03a9f4");
 	}
 	
+	/*NOTE: Related to HTML5 We should not apply ATF */
 	
 	@AfterClass
 	public void afterClass() {

@@ -18,7 +18,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_10__Selenium_Pratice_button_checkbox_radio {
+public class Topic_10_Selenium_Pratice_button_checkbox_radio {
 	WebDriver driver;
 	WebDriverWait explicitwait;
 	JavascriptExecutor jsExcutor;
