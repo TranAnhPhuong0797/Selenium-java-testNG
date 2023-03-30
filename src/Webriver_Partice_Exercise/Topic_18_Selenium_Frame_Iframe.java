@@ -46,7 +46,7 @@ public class Topic_18_Selenium_Frame_Iframe {
 	}
 	
 	@Test
-	public void TC_01_() {
+	public void TC_01_Iframe() {
 		driver.get("https://skills.kynaenglish.vn/");
 		sleepfunction(2);
 		
@@ -90,13 +90,23 @@ public class Topic_18_Selenium_Frame_Iframe {
 	}
 	
 	@Test
-	public void TC_02_() {
-		//driver.get("https://netbanking.hdfcbank.com/netbanking/");
+	public void TC_02_Frame() {
+		driver.get("https://netbanking.hdfcbank.com/netbanking/");
+		sleepfunction(2);
 		
+		//Switch to frame
+		driver.switchTo().frame(driver.findElement(By.xpath("//frame[@name='login_page']")));
+		sleepfunction(2);
+		
+		driver.findElement(By.xpath("//input[@name='fldLoginUserId']")).sendKeys("Joker");
+		driver.findElement(By.xpath("//a[text()='CONTINUE']")).click();
+		sleepfunction(1);
+		
+		Assert.assertTrue(driver.findElement(By.xpath("//input[@name='fldPassword']")).isDisplayed());
 	}
 	
 	@AfterClass
 	public void afterClass() {
-		//driver.quit();
+		driver.quit();
 	}
 }

@@ -57,7 +57,6 @@ public class Topic_15_Selenium_Handle_Popup_Dialog_I {
 	}
 
 	// Part I
-
 	@Test
 	public void TC_01_FixedPopup() {
 		driver.get("https://ngoaingu24h.vn/");
@@ -111,9 +110,9 @@ public class Topic_15_Selenium_Handle_Popup_Dialog_I {
 
 		driver.findElement(By.xpath("//input[@id='user-login']")).sendKeys("automation@gmail.com");
 		driver.findElement(By.xpath("//input[@id='user-password']")).sendKeys("123456");
-		sleepfunction(1);
-
-		driver.findElement(By.xpath("//button[@id='btn-submit-login']")).click();
+		sleepfunction(2);
+		jsExecutor.executeScript("arguments[0].click();",
+				driver.findElement(By.xpath("//button[@id='btn-submit-login']")));
 		sleepfunction(1);
 
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='password-form-login-message']")).getText(),
@@ -176,15 +175,16 @@ public class Topic_15_Selenium_Handle_Popup_Dialog_I {
 		sleepfunction(2);
 
 		By createAccountpopup = By.xpath("//div[text()='Sign Up']/parent::div/parent::div");
-
+		Assert.assertEquals(driver.findElements(createAccountpopup).size(), 0);
+		
 		driver.findElement(By.cssSelector("a[data-testid='open-registration-form-button']")).click();
-		sleepfunction(1);
+		sleepfunction(2);
 
 		// Verify pop up is displayed
 		Assert.assertTrue(driver.findElement(createAccountpopup).isDisplayed());
 
 		driver.findElement(By.xpath("//div[text()='Sign Up']/parent::div/preceding-sibling::img")).click();
-		sleepfunction(1);
+		sleepfunction(3);
 
 		// Verify pop up still not visible
 		Assert.assertEquals(driver.findElements(createAccountpopup).size(), 0);
@@ -222,7 +222,7 @@ public class Topic_15_Selenium_Handle_Popup_Dialog_I {
 	}
 
 	@Test
-	public void TC_06_() {
+	public void TC_06_RandomPopup_Indom() {
 		driver.get("http://www.kmplayer.com/");
 		sleepfunction(2);
 
@@ -263,6 +263,6 @@ public class Topic_15_Selenium_Handle_Popup_Dialog_I {
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		//driver.quit();
 	}
 }
