@@ -9,7 +9,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -65,9 +64,7 @@ public class Topic_15_Selenium_Handle_Popup_Dialog_I {
 		sleepfunction(2);
 
 		By Login_popup = By.xpath(
-				"//div[@id='modal-login-v1'and@style='display: block;']//div[@class='modal-dialog']//div[@class='modal-content']"); // By
-																																	// Login_popup
-																																	// =
+				"//div[@id='modal-login-v1'and@style='display: block;']//div[@class='modal-dialog']//div[@class='modal-content']"); 
 		By.xpath("(//div[@id='modal-login-v1']//div[@class='modal-content'])[1]");
 
 		// Pop-up is NOT displayed
