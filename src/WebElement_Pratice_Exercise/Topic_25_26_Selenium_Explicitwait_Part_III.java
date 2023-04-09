@@ -19,11 +19,19 @@ import org.testng.annotations.Test;
 /*Implicit Wait*/
 /*Explicit Wait*/
 
-public class Topic_25_Selenium_Explicitwait_Part_III {
+public class Topic_25_26_Selenium_Explicitwait_Part_III {
 	WebDriver driver;
 	WebDriverWait explicitwait;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
+	
+	String workspace_01 = "03.JPG";
+	String workspace_02 = "04.jpg";
+	String workspace_03 = "05.jpg";
+	
+	String WfilePath01 = projectPath + "\\UploadFiles\\" + workspace_01;
+	String WfilePath02 = projectPath + "\\UploadFiles\\" + workspace_02;
+	String WfilePath03 = projectPath + "\\UploadFiles\\" + workspace_03;
 	@BeforeClass
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
@@ -36,7 +44,7 @@ public class Topic_25_Selenium_Explicitwait_Part_III {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		explicitwait = new WebDriverWait(driver, 10);
+		explicitwait = new WebDriverWait(driver, 50);
 	}
 	
 	// This is the function related to Static Wait
@@ -49,8 +57,8 @@ public class Topic_25_Selenium_Explicitwait_Part_III {
 	}
 	
 
-	@Test
-	public void TC_01_(){
+	//@Test
+	public void TC_01(){
 		driver.get("https://demos.telerik.com/aspnet-ajax/ajaxloadingpanel/functionality/explicit-show-hide/defaultcs.aspx");
 		
 		//Wait until loading Icon visible
@@ -75,8 +83,32 @@ public class Topic_25_Selenium_Explicitwait_Part_III {
 	}
 	
 	@Test
-	public void TC_02_(){
-
+	public void TC_02(){
+		driver.get("https://gofile.io/uploadFiles");
+		
+		//Wait until the element "Add files" visible
+		explicitwait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div#filesUpload button.filesUploadButton")));
+		
+		driver.findElement(By.cssSelector("input[type='file']")).sendKeys(WfilePath01 + "\n" + WfilePath02 + "\n" + WfilePath03);
+		
+		//Wait for the Loading Icons for each file Invisible
+		explicitwait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.progress")));
+		
+		//Wait the successfully mess is visible
+		explicitwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='col-auto text-center']//div[text()='Your files have been successfully uploaded']")));
+		
+		//Verify the successfully mess is displayed
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='col-auto text-center']//div[text()='Your files have been successfully uploaded']")).isDisplayed());
+		
+		//Wait until the element "Add files" clickable
+		explicitwait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.mainUploadSuccessLink a")));
+		
+		//Click button Show file
+		driver.findElement(By.cssSelector("div.mainUploadSuccessLink a")).click();
+		
+		//Wait until the file name & Buttons Download / Play visible
+		Assert.assertTrue(explicitwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='"+workspace_01+"']/parent::a/parent::div/following-sibling::div//button/span[text()='Download']"))).isDisplayed());
+		Assert.assertTrue(explicitwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='"+workspace_01+"']/parent::a/parent::div/following-sibling::div//button/span[text()='Close']"))).isDisplayed());
 	}
 	
 	@AfterClass
