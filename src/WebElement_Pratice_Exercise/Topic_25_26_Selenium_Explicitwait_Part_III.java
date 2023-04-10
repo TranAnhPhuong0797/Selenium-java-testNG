@@ -42,9 +42,8 @@ public class Topic_25_26_Selenium_Explicitwait_Part_III {
 
 		//driver = new ChromeDriver();
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		explicitwait = new WebDriverWait(driver, 50);
+		explicitwait = new WebDriverWait(driver, 40);
 	}
 	
 	// This is the function related to Static Wait
