@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="false" name="Suite">
+	<test name="testNG">
+		<!--		<groups>-->
+		<!--			<run>-->
+		<!--				<include name="payment"/>-->
+		<!--			</run>-->
+		<!--		</groups>-->
+		<!--				<packages>-->
+		<!--					<package name="testNG_pratice_User" />-->
+		<!--				</packages>-->
+		<!--		<classes>-->
+		<!--			      <class name="Test_NG.test_NG_Topic02_Annotation"/>-->
+		<!--		</classes>-->
+		<groups>
+			<run>
+				<include name="product" />
+			</run>
+		</groups>
+		
+		<packages>
+			<package name="testNG_practice_Admin" />
+		</packages>
+	</test>
+</suite>
