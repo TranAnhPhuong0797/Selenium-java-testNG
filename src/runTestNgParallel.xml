@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Suite" thread-count="2">
+	<!--	run parameter-->
+	<!--	Global-->
+	<parameter name="environment" value="live"></parameter>
+	<test name="Run on FIREFOX">
+		<!--					Local-->
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="Test_NG.test_NG_Topic03_Parameter_environment" />
+		</classes>
+	</test>
+	<test name="Run on CHROME">
+		<!--					Local-->
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="Test_NG.test_NG_Topic03_Parameter_environment" />
+		</classes>
+	</test>
+</suite>
