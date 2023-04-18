@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite parallel="false" name="Suite">
+	<listeners>
+		<listener class-name="listener.extentReportListener"></listener>
+	</listeners>
+	
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="Test_NG.test_NG_Topic03_Listener" />
+		</classes>
+	</test>
+	
 	<!--	Run annotation-->
 	<!--	<test name="testNG">-->
 	<!--				<groups>-->
@@ -23,7 +34,6 @@
 	<!--					<package name="testNG_practice_Admin" />-->
 	<!--				</packages>						-->
 	<!--	</test>-->
-	
 	<!--	run parameter-->
 	<!--	Global-->
 	<!--	<parameter name="environment" value="live"></parameter>-->
@@ -41,19 +51,18 @@
 	<!--			<class name="Test_NG.test_NG_Topic03_Parameter_environment" />-->
 	<!--		</classes>-->
 	<!--	</test>-->
-	
-	<test name="Run on FIREFOX">
-		<!--		Local-->
-		<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="Test_NG.test_NG_Topic03_Parameter" />
-		</classes>
-	</test>
-	<test name="Run on CHROME">
-		<!--		Local-->
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="Test_NG.test_NG_Topic03_Parameter" />
-		</classes>
-	</test>
+	<!--	<test name="Run on FIREFOX">-->
+	<!--				Local-->
+	<!--		<parameter name="browser" value="firefox" />-->
+	<!--		<classes>-->
+	<!--			<class name="Test_NG.test_NG_Topic03_Parameter" />-->
+	<!--		</classes>-->
+	<!--	</test>-->
+	<!--	<test name="Run on CHROME">-->
+	<!--				Local-->
+	<!--		<parameter name="browser" value="chrome" />-->
+	<!--		<classes>-->
+	<!--			<class name="Test_NG.test_NG_Topic03_Parameter" />-->
+	<!--		</classes>-->
+	<!--	</test>-->
 </suite>

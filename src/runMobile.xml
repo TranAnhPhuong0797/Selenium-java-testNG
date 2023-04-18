@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="false" name="Suite">
+	<test name="testNG">
+		<packages>
+			<package name="testNG_practice_Admin" />
+		</packages>
+	</test>
+</suite>
