@@ -1,4 +1,4 @@
-package javaTested;
+package javaBasic;
 
 public class Topic_02_java_Casting {
 

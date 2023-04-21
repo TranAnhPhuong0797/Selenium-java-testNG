@@ -1,4 +1,4 @@
-package javaTested;
+package javaBasic;
 
 import java.util.Iterator;
 
