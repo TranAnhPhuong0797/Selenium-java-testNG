@@ -1,4 +1,4 @@
-package Webriver;
+package javaTested;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +42,7 @@ public class Topic_02_javaDatatype {
 				
 			//Array
 				String [] fname = {"Father", "Mother", "Brother"}; 
+				int[] Fnum = {1,2,3};
 				
 			//Collection: List / Set / Queue
 				List<WebElement> radioButton = chrome.findElements(By.cssSelector("")); 
