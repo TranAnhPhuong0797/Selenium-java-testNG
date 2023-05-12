@@ -1,6 +1,6 @@
 package javaPratice_OOP;
 
-public class class_object_Student {
+public class java_Topic02_class_object_Student {
 	private int student_id;
 	private String student_name;
 	private float point_Practice, point_Knowlegde;
@@ -52,7 +52,7 @@ public class class_object_Student {
 	}
 
 	public static void main(String[] args) {
-		class_object_Student first_Student = new class_object_Student();
+		java_Topic02_class_object_Student first_Student = new java_Topic02_class_object_Student();
 		first_Student.setStudent_id(00233);
 		first_Student.setStudent_name("Aladin");
 		first_Student.setPoint_Practice(7.6f);
@@ -60,7 +60,7 @@ public class class_object_Student {
 		first_Student.showStudentInfor();
 		
 		
-		class_object_Student second_Student = new class_object_Student();
+		java_Topic02_class_object_Student second_Student = new java_Topic02_class_object_Student();
 		second_Student.setStudent_id(00234);
 		second_Student.setStudent_name("Muzan");
 		second_Student.setPoint_Practice(5.6f);
